@@ -397,6 +397,33 @@ html::-webkit-scrollbar,body::-webkit-scrollbar{width:0;height:0;display:none}
 .crew li{padding:22px 0;border-bottom:1px solid var(--hair);font-size:clamp(24px,2.5vw,34px);font-weight:600;letter-spacing:-.03em;line-height:1.1}
 .links{gap:24px}
 @media(max-width:900px){.team{grid-template-columns:1fr;gap:36px}}
+
+/* mobile fixes: nav pill no longer overflows, horizon line no longer crosses the scroll cue */
+@media(max-width:480px){
+ nav.top .go .go-t{max-width:0;opacity:0;padding-left:0}
+ nav.top .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+}
+@media(max-width:640px){
+ .hero .rim{top:calc(100% - 56px);bottom:auto}
+ .hero .glow{top:calc(100% - 56px - 8vh);bottom:auto}
+ .cue{margin-top:30px}
+ /* keep text clear of the planet rail on the right edge */
+ #page-home .wrap{padding-right:40px}
+ .st-chs{width:calc(100vw - 64px);bottom:172px}
+ /* Explorer: cards never grow wider than the screen, table fits */
+ #page-expander .grid{grid-template-columns:minmax(0,1fr)}
+ #page-expander .card{min-width:0}
+ #page-expander table{font-size:13px}
+ #page-expander td,#page-expander th{padding:9px 5px}
+ /* Explorer: readout chips sit below the corner tag instead of under it */
+ #page-expander #fHud{top:50px;right:14px}
+ /* lesson: answer feedback gets its own line above the buttons */
+ .ls-top{padding:14px 16px}.ls-foot{padding:14px 16px}
+ .ls-in{flex-wrap:wrap}.ls-fb{flex:1 1 100%}.ls-fb:empty{display:none}
+ .ls-btns{width:100%;justify-content:flex-end}
+ .ls-b{white-space:nowrap;padding:12px 16px}.ls-b.main{min-width:120px}
+}
+@media(max-width:340px){h1.big{font-size:52px}}
 </style>
 </head>
 <body>
@@ -960,7 +987,7 @@ const sims={
 window.LESSON={open(){i=0;state=[];render();},stop(){cancelAnimationFrame(raf);}};
 })();
 </script>
-<script>console.warn('Scripts "build/three.js" and "build/three.min.js" are deprecated with r150+, and will be removed with r160. Please use ES Modules or alternatives: https://threejs.org/docs/index.html#manual/en/introduction/Installation'),
+<script>void 0,
 /**
  * @license
  * Copyright 2010-2023 Three.js Authors
